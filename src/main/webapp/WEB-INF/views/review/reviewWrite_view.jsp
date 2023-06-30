@@ -9,6 +9,19 @@
  <!-- <link href="/css/style.css" rel="stylesheet" type="text/css"> -->
 <script src="${pageContext.request.contextPath}/resources/js/jquery.js"></script>
 <script type="text/javascript">
+/*********************** 아이디 중복 검사*************************/
+function fn_idcheck(){
+	var idckeck = document.joinForm.value;
+	
+	if(idcheck.length==0 || idcheck==""){
+		alert("아이디를 입력하세요.")
+		joinForm.idcheck.focus();
+	}else{
+		joinForm.method="Post";
+		joinForm.action="${contextPath}/shallweshare/review.ReviewDao";
+	}
+	
+}
 	
 		 /***********************게시판 내용 유효성 검사*************************/
 	function fn_submit() {
@@ -60,7 +73,7 @@
 			<tr>				
 				<td >아이디</td>	
 				<td><input type="text"  name="u_id" size="50" >			
-				<input type="button" class="idck"  value="중복검사" >
+				<input type="button" value="중복검사" onclick="fn_idcheck()" name="idcheck" id="idcheck">
 				<span id="result"></span>
 				</td>
 								

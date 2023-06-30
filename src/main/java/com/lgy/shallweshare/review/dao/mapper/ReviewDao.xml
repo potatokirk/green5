@@ -5,11 +5,14 @@
 <mapper namespace="com.lgy.shallweshare.review.dao.ReviewDao">
 
 	<select id="list" resultType="com.lgy.shallweshare.review.dto.ReviewDto">
-		select review_id,
+		select 
+		review_id,
+		p_id,
 	    u_id,
 	    review_u_id,
+	    review_satisfy,
 		review_content,
-		to_char(review_created,'YYYY-MM-DD') from REVIEW ORDER BY review_created DESC
+		review_created from REVIEW
 	</select>
 
 
@@ -17,11 +20,14 @@
     	<![CDATA[
 			SELECT *
     FROM (
-         SELECT rownum rn,review_id,
+         SELECT rownum rn,
+        review_id,
+        p_id,
 	    u_id,
 	    review_u_id,
+	    review_satisfy,
 		review_content,
-		to_char(review_created,'YYYY-MM-DD')
+		to_char(review_created,'YYYY-MM-DD') "review_created"
          FROM  ( SELECT * FROM review ORDER BY review_id DESC) 
 			            WHERE ROWNUM <= (#{pageNum} * #{amount}
 			           )
@@ -39,31 +45,39 @@
 	<insert id="write" parameterType="hashmap">
 		<!-- insert into REVIEW(review_id,u_id, review_u_id, review_content) 
 		values(REVIEW_SEQ.NEXTVAL,#{u_id},#{review_u_id},#{review_content}) -->
-		insert into REVIEW(review_id, u_id, review_u_id, review_content, review_created) 
-		values( NVL((select max (review_id)from review),0)+1, #{u_id}, #{review_u_id}, #{review_content}, SYSDATE)
+		insert into REVIEW(review_id, u_id, review_u_id, review_satisfy, review_content, review_created) 
+		values( NVL((select max (review_id)from review),0)+1, #{u_id}, #{review_u_id}, #{review_satisfy}, #{review_content}, SYSDATE)
 		
 	</insert>
 
 	<select id="contentView" parameterType="hashmap" resultType="com.lgy.shallweshare.review.dto.ReviewDto">
-		select review_id,
+		select 
+		review_id,
 		u_id, 
 		review_u_id,
+		p_id,
+		review_satisfy,
 		review_content,
 		review_created from
-		REVIEW where u_id=#{u_id}
+		REVIEW where review_id=#{review_id}
 	</select>
 
 	<update id="modify" parameterType="hashmap">
-		update review set u_id = #{u_id},
+		update review set
+		
+		review_u_id = #{review_u_id},
+		p_id = #{p_id},
+		review_satisfy = #{review_satisfy},
 		review_content = #{review_content},
-		review_created = #{review_created}
-		where bid=#{bid}
+		review_created = SYSDATE
+		
+		where review_id = #{review_id}
 	</update>
 	
 	<delete id="delete" parameterType="hashmap">
 
-		delete from review where
-		u_id=#{u_id}
+		delete from review
+		 where review_id=#{review_id}
 	</delete>
 	
 

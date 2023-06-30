@@ -17,6 +17,7 @@ import lombok.extern.slf4j.Slf4j;
 @Service("ReviewService")
 public class ReviewServiceImpl implements ReviewService {
 
+
 	@Autowired
 	private SqlSession sqlSession;
 
@@ -27,12 +28,10 @@ public class ReviewServiceImpl implements ReviewService {
 
 		ReviewDao dao = sqlSession.getMapper(ReviewDao.class);
 
-		int total = dao.getTotalCount();
-		log.info("@# total ===>" + total);
-
 		log.info("@# BServiceImpl.list(Criteria cri) end");
-
-		return dao.listWithPaging(cri);
+		ArrayList<ReviewDto> list = dao.listWithPaging(cri);
+		//return dao.listWithPaging(cri);
+		return list;
 	}
 
 	@Override
@@ -43,6 +42,17 @@ public class ReviewServiceImpl implements ReviewService {
 		log.info("@# ReviewServiceImpl.write() end");
 
 	}
+	/******************중복 확인*************************/
+	
+	@Override
+	public int idcheck(int u_id) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
+	
+
+	
 
 	@Override
 	public ReviewDto contentView(HashMap<String, String> param) {
@@ -52,6 +62,10 @@ public class ReviewServiceImpl implements ReviewService {
 		log.info("@# ReviewServiceImpl.contentView() end");
 		return dto;
 	}
+
+
+
+
 
 	@Override
 	public int getTotalCount() {
@@ -70,14 +84,32 @@ public class ReviewServiceImpl implements ReviewService {
 
 	@Override
 	public void modify(HashMap<String, String> param) {
-		// TODO Auto-generated method stub
+		log.info("@# ReviewServiceImpl.modify() start");
+		ReviewDao dao = sqlSession.getMapper(ReviewDao.class);
 
+		dao.modify(param);
+		
+		log.info("@# ReviewServiceImpl.modify() end");
 	}
+
+	
 
 	@Override
 	public void delete(HashMap<String, String> param) {
-		// TODO Auto-generated method stub
+		log.info("@# ReviewServiceImpl.delete() start");
+		
+		log.info(""+param);
+		ReviewDao dao = sqlSession.getMapper(ReviewDao.class);
+
+		dao.delete(param);
+		
+		log.info("@# ReviewServiceImpl.delete() end");
+	}
 
 	}
 
-}
+
+
+	
+
+

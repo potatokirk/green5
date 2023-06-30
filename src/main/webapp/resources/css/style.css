@@ -1,0 +1,12 @@
+@charset "UTF-8";
+
+.a {
+	color: red;
+}
+
+/* content_view td사이즈 */
+.b{
+	width: 10%;
+	height : 10%;
+	color : blue;
+}

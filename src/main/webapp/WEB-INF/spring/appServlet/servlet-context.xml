@@ -16,7 +16,9 @@ xmlns="http://www.springframework.org/schema/mvc"
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving 
 		up static resources in the ${webappRoot}/resources directory -->
-	<resources mapping="/resources/**" location="/resources/" />
+	 <resources mapping="/resources/**" location="/resources/" />
+<!--  	<resources mapping="/css/**" location="/resources/css/" />
+-->	
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources 
 		in the /WEB-INF/views directory -->
@@ -44,8 +46,11 @@ xmlns="http://www.springframework.org/schema/mvc"
 		class="org.mybatis.spring.SqlSessionFactoryBean">
 		<beans:property name="dataSource" ref="dataSource"></beans:property>
 		<!-- sql 로 구성된 xml 경로 설정 -->
-		<beans:property name="mapperLocations"
-			value="classpath:com/lgy/shallweshare/review/dao/mapper/*.xml"></beans:property>
+		
+		<beans:property name="mapperLocations" value="classpath*:com/lgy/shallweshare/**/dao/mapper/*.xml" />
+		<!--<beans:property name="mapperLocations"
+		value="classpath:com/lgy/shallweshare/review/dao/mapper/*.xml">
+		</beans:property>-->
 	</beans:bean>
 
 	<!-- SqlSessionTemplate 타입의 sqlSession 객체는 sqlSessionFactory 객체를 포함한다. -->

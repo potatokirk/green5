@@ -14,4 +14,5 @@ public ReviewDto contentView(HashMap<String, String>param);
 public void modify (HashMap<String, String>param);
 public void delete(HashMap<String, String> param);
 public int getTotalCount();
+public int idcheck(int id);
 }

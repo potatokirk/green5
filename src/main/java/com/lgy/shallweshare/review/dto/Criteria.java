@@ -12,7 +12,8 @@ private int PageNum;
 private int amount;
 
 public Criteria() {
-	this(1,10);
+	this(1,3);
 }
 // test commit
+// github desktop
 }

@@ -12,6 +12,8 @@
 	</script>
 </head>
 <body>
-<a href="reviewList">리뷰 페이지 이동</a>
+<a href="review/reviewList">리뷰 페이지 이동</a><br>
+<h1></h1>
+<a href="users/usersLogIn">로그인 페이지 이동</a>
 </body>
 </html>

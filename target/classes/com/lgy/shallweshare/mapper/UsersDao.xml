@@ -4,8 +4,8 @@
 
 <mapper namespace="com.lgy.shallweshare.users.dao.UsersDao">
 
-	<select id="login" resultType="com.lgy.shallweshare.users.dto.UsersDto">
-		select * from users where u_id = #{u_id}
+	<select id="getUserInfo" resultType="com.lgy.shallweshare.users.dto.UsersDto">
+		select * from users where u_id = #{u_id, jdbcType=VARCHAR}
 	</select>
 	
 	</mapper>

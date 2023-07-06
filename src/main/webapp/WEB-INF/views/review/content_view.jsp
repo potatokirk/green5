@@ -40,9 +40,7 @@
 			
 			<tr>
 				<td class ="b">만족도</td>
-				  <%-- <td>
-					<input type="text" name="review_satisfy" value="${content_view.review_satisfy}">
-				</td> --%>
+				
 			
 				<td> 
 				 <select name="review_satisfy" class="review_satisfy">
@@ -70,10 +68,8 @@
 			<tr>
 				<td colspan="2">
 					<input type="button" onclick="fn_modify()" value="수정">
-<!-- 					&nbsp;&nbsp;<a href="list">목록보기</a> -->
-<!-- formaction="list" : name 으로 설정된 값들을 가지고 이동 -->
-					&nbsp;&nbsp;<input type="submit" value="목록보기" formaction="list">
-					&nbsp;&nbsp;<input type="submit" value="삭제" formaction="delete">
+					&nbsp;&nbsp;<input type="submit" value="목록보기" formaction="list" />
+					&nbsp;&nbsp;<input type="button" value="삭제" formaction="delete"  />
 				</td>
 			</tr>
 		</form>
@@ -88,12 +84,12 @@ function fn_modify(){
 	 var review_content = document.getElementsByName("review_content")
 	  //        게시판 내용
 	 if(review_content[0].value.length==0){
-        alert("게시판 내용을 적어주세요")
+        alert("리뷰 내용을 적어주세요")
 	// console.log("0000000000000")
         return false;
     }
     	
-    if(review_content[0].value.length > 1500){
+    if(review_content[0].value.length > 500){
 	 console.log(i)
     alert('줄여서 적어주세요.');
     return false;
@@ -103,6 +99,8 @@ function fn_modify(){
 document.querySelector("form").submit();
  
     }
+    
+    
 </script>
 
 

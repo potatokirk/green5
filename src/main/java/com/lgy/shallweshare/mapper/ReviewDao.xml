@@ -13,6 +13,7 @@
 	    review_satisfy,
 		review_content,
 		review_created from REVIEW
+		where review_u_id=#{u_id, jdbcType=VARCHAR}
 	</select>
 
 

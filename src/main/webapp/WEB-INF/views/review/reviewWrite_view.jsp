@@ -4,18 +4,20 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<title>reviewWrite</title>
  <link rel="stylesheet"> 
 <style> @import '../resources/css/style.css'</style>
  <!-- <link href="/css/style.css" rel="stylesheet" type="text/css"> -->
 <script src="${pageContext.request.contextPath}/resources/js/jquery.js"></script>
 <script type="text/javascript">
+
 /*********************** 아이디 중복 검사*************************/
 function fn_idcheck(){
-	var idckeck = document.joinForm.value;
+	var review_idcheck = document.joinForm.value;
 	
-	if(idcheck.length==0 || idcheck==""){
+	if(review_idcheck.length==0 || review_idcheck==""){
 		alert("아이디를 입력하세요.")
-		joinForm.idcheck.focus();
+		joinForm.review_idcheck.focus();
 	}else{
 		joinForm.method="Post";
 		joinForm.action="${contextPath}/shallweshare/review.ReviewDao";
@@ -32,7 +34,7 @@ function fn_idcheck(){
 	
          return false;
      }else{
-             if(review_content[0].value.length > 1500){
+             if(review_content[0].value.length > 500){
                   alert('줄여서 적어주세요.');
                   return false;
            }
@@ -73,7 +75,7 @@ function fn_idcheck(){
 			<tr>				
 				<td >아이디</td>	
 				<td><input type="text"  name="u_id" size="50" >			
-				<input type="button" value="중복검사" onclick="fn_idcheck()" name="idcheck" id="idcheck">
+				<input type="button" value="중복검사" onclick="fn_idcheck()" name="review_idcheck" id="review_idcheck">
 				<span id="result"></span>
 				</td>
 								
@@ -87,7 +89,6 @@ function fn_idcheck(){
 			<tr>
 				<td>선택</td>
 				<td>
-					<!-- <input type="text" name="review_satisfy" size="50"> -->
 					 <select name="review_satisfy" class="review_satisfy">
 						<option value="T">good</option>
 						<option value="F">bad</option>

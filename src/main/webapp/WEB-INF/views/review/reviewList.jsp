@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>reviewList</title>
 <style type="text/css">
 .div_page ul {
 	display: flex;
@@ -27,19 +27,19 @@
 		</tr>
 
 		<tr>
-			<td>아이디</td>
-				<td>${ReviewDto.u_id}</td>
-		
-		</tr>
-
-		<tr>
-			<td>작성자 아이디</td>	
+			<td>받는사람 아이디</td>
 			<td>${ReviewDto.review_u_id}</td>
 		
 		</tr>
 
 		<tr>
-			<td>받는 사람 아이디</td>
+			<td>작성자 아이디</td>	
+				<td>${ReviewDto.u_id}</td>
+		
+		</tr>
+
+		<tr>
+			<td>파티 아이디</td>
 		<td>${ReviewDto.p_id}</td>
 		</tr>
 
@@ -50,7 +50,6 @@
 
 		<tr>
 			<td>내용</td>
-				<%-- <td><a href="content_view?review_id=${ReviewDto.review_id}">${ReviewDto.review_content}</a></td> --%>
 		<td>
 		<a class="move_link" href="${ReviewDto.review_id}">${ReviewDto.review_content}</a>
 		</td>
@@ -58,13 +57,11 @@
 
 		<tr>
 			<td>작성시간</td>
-				<%-- <td><fmt:formatDate value="${ReviewDto.review_created}" pattern="yyyy-mm-dd" type="date"/></td> --%>
 			 <td>${ReviewDto.review_created}</td> 
 						
 		</tr>
 
 			<tr>
-				<%-- <td><fmt:parseDate var="parseDateData" value="${review_created}" pattern="yyyyMMdd"/></td> --%>
 			</tr>
 		</c:forEach>
 		<tr>
@@ -80,9 +77,6 @@
 			</c:if>
 			<c:forEach var="num" begin="${pageMaker.startPage}"
 				end="${pageMaker.endPage}">
-				<%-- 				<li>${num}</li> --%>
-				<%-- 				<li ${pageMaker.cri.pageNum == num ? "style='color:red'":""} > --%>
-
 				<li class="paginate_button"
 					${pageMaker.cri.pageNum == num ? "style='background-color:yellow'":""}>
 

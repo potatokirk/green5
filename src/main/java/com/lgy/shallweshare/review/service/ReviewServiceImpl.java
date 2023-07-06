@@ -77,9 +77,11 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 
 	@Override
-	public ArrayList<ReviewDto> list() {
-
-		return null;
+	public ArrayList<ReviewDto> getPersonalReview(HashMap<String, String>param) {
+		log.info("@# list 시작한다");
+		ReviewDao dao = sqlSession.getMapper(ReviewDao.class);
+		
+		return dao.list(param);
 	}
 
 	@Override
